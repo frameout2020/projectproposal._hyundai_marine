@@ -1,11 +1,13 @@
 {
-  "name": "hd-insurance-media-platform",
+  "name": "projectproposal._hyundai_marine",
   "version": "1.0.0",
   "private": true,
   "description": "HTML + SCSS + Gulp scaffold for Figma implementation work.",
   "scripts": {
     "dev": "gulp",
-    "build": "gulp build"
+    "build": "gulp build",
+    "deploy": "node scripts/deploy-pages.mjs",
+    "deploy:dry": "node scripts/deploy-pages.mjs --dry-run"
   },
   "browserslist": [
     "last 2 versions",
