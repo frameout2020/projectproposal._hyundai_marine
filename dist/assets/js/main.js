@@ -1,6 +1,9 @@
 document.documentElement.classList.add('js-ready');
 
 const ERROR_BAR_MIN_OFFSET = 8;
+const DASHBOARD_ENTRANCE_DURATION = 560;
+const DASHBOARD_ROW_DELAY = 220;
+const DASHBOARD_METRIC_DELAY = 120;
 
 function setErrorBarState(bar, progress) {
   const chart = bar.closest('.error-chart');
@@ -185,155 +188,117 @@ function animateCountValue(element) {
   requestAnimationFrame(tick);
 }
 
-function initErrorCharts() {
-  const charts = Array.from(document.querySelectorAll('.error-chart[data-animate="bars"]'));
-
-  if (!charts.length) {
-    return;
-  }
+function prepareErrorCharts(root = document) {
+  const charts = Array.from(root.querySelectorAll('.error-chart[data-animate="bars"]'));
 
   charts.forEach((chart) => {
+    delete chart.dataset.animated;
     chart.querySelectorAll('.error-chart__bar').forEach((bar) => setErrorBarState(bar, 0));
   });
+}
 
-  if ('IntersectionObserver' in window) {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            animateErrorChart(entry.target);
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      {
-        threshold: 0.35
-      }
-    );
+function prepareUsageDonuts(root = document) {
+  const donuts = Array.from(root.querySelectorAll('.usage-panel__donut-ring[data-animate="donut"]'));
 
-    charts.forEach((chart) => observer.observe(chart));
-  } else {
-    charts.forEach((chart) => animateErrorChart(chart));
-  }
-
-  window.addEventListener('resize', () => {
-    charts.forEach((chart) => {
-      if (chart.dataset.animated === 'true') {
-        chart.querySelectorAll('.error-chart__bar').forEach((bar) => setErrorBarState(bar, 1));
-      }
-    });
+  donuts.forEach((donut) => {
+    delete donut.dataset.animated;
+    setUsageDonutState(donut, 0);
   });
 }
 
-function initUsageDonuts() {
-  const donuts = Array.from(document.querySelectorAll('.usage-panel__donut-ring[data-animate="donut"]'));
+function prepareUsageGauges(root = document) {
+  const gauges = Array.from(root.querySelectorAll('.usage-gauge__chart[data-animate="gauge"]'));
 
-  if (!donuts.length) {
-    return;
-  }
-
-  donuts.forEach((donut) => setUsageDonutState(donut, 0));
-
-  if ('IntersectionObserver' in window) {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            animateUsageDonut(entry.target);
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      {
-        threshold: 0.35
-      }
-    );
-
-    donuts.forEach((donut) => observer.observe(donut));
-  } else {
-    donuts.forEach((donut) => animateUsageDonut(donut));
-  }
-
-  window.addEventListener('resize', () => {
-    donuts.forEach((donut) => {
-      if (donut.dataset.animated === 'true') {
-        setUsageDonutState(donut, 1);
-      }
-    });
+  gauges.forEach((gauge) => {
+    delete gauge.dataset.animated;
+    setUsageGaugeState(gauge, 0);
   });
 }
 
-function initUsageGauges() {
-  const gauges = Array.from(document.querySelectorAll('.usage-gauge__chart[data-animate="gauge"]'));
+function prepareCountValues(root = document) {
+  const elements = Array.from(root.querySelectorAll('[data-animate="count"]'));
 
-  if (!gauges.length) {
-    return;
-  }
-
-  gauges.forEach((gauge) => setUsageGaugeState(gauge, 0));
-
-  if ('IntersectionObserver' in window) {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            animateUsageGauge(entry.target);
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      {
-        threshold: 0.35
-      }
-    );
-
-    gauges.forEach((gauge) => observer.observe(gauge));
-  } else {
-    gauges.forEach((gauge) => animateUsageGauge(gauge));
-  }
-
-  window.addEventListener('resize', () => {
-    gauges.forEach((gauge) => {
-      if (gauge.dataset.animated === 'true') {
-        setUsageGaugeState(gauge, 1);
-      }
-    });
+  elements.forEach((element) => {
+    delete element.dataset.animated;
+    setCountValue(element, 0);
   });
 }
 
-function initCountValues() {
-  const elements = Array.from(document.querySelectorAll('[data-animate="count"]'));
+function prepareDashboardMetrics(root = document) {
+  prepareErrorCharts(root);
+  prepareUsageDonuts(root);
+  prepareUsageGauges(root);
+  prepareCountValues(root);
+}
 
-  if (!elements.length) {
+function playDashboardMetrics(root = document) {
+  root.querySelectorAll('.error-chart[data-animate="bars"]').forEach((chart) => animateErrorChart(chart));
+  root.querySelectorAll('.usage-panel__donut-ring[data-animate="donut"]').forEach((donut) => animateUsageDonut(donut));
+  root.querySelectorAll('.usage-gauge__chart[data-animate="gauge"]').forEach((gauge) => animateUsageGauge(gauge));
+  root.querySelectorAll('[data-animate="count"]').forEach((element) => animateCountValue(element));
+}
+
+function syncDashboardMetrics() {
+  document.querySelectorAll('.error-chart[data-animate="bars"]').forEach((chart) => {
+    if (chart.dataset.animated === 'true') {
+      chart.querySelectorAll('.error-chart__bar').forEach((bar) => setErrorBarState(bar, 1));
+    }
+  });
+
+  document.querySelectorAll('.usage-panel__donut-ring[data-animate="donut"]').forEach((donut) => {
+    if (donut.dataset.animated === 'true') {
+      setUsageDonutState(donut, 1);
+    }
+  });
+
+  document.querySelectorAll('.usage-gauge__chart[data-animate="gauge"]').forEach((gauge) => {
+    if (gauge.dataset.animated === 'true') {
+      setUsageGaugeState(gauge, 1);
+    }
+  });
+}
+
+function initDashboardEntrance() {
+  const cards = Array.from(document.querySelectorAll('.dashboard-entry-card'));
+
+  if (!cards.length) {
+    playDashboardMetrics(document);
     return;
   }
 
-  elements.forEach((element) => setCountValue(element, 0));
+  const rows = [
+    Array.from(document.querySelectorAll('.summary-grid .dashboard-entry-card')),
+    Array.from(document.querySelectorAll('.dashboard-grid--top .dashboard-entry-card')),
+    Array.from(document.querySelectorAll('.dashboard-grid--bottom .dashboard-entry-card'))
+  ].filter((group) => group.length);
 
-  if ('IntersectionObserver' in window) {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            animateCountValue(entry.target);
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      {
-        threshold: 0.4
-      }
-    );
+  let lastRowDelay = 0;
 
-    elements.forEach((element) => observer.observe(element));
-  } else {
-    elements.forEach((element) => animateCountValue(element));
-  }
+  rows.forEach((group, rowIndex) => {
+    if (!group.length) {
+      return;
+    }
+
+    const delay = rowIndex * DASHBOARD_ROW_DELAY;
+
+    lastRowDelay = delay;
+
+    group
+      .sort((a, b) => a.getBoundingClientRect().left - b.getBoundingClientRect().left)
+      .forEach((card) => {
+        window.setTimeout(() => {
+          card.classList.add('is-revealed');
+        }, delay);
+      });
+  });
+
+  window.setTimeout(() => {
+    playDashboardMetrics(document);
+  }, lastRowDelay + DASHBOARD_ENTRANCE_DURATION + DASHBOARD_METRIC_DELAY);
 }
 
 window.addEventListener('load', () => {
-  initErrorCharts();
-  initUsageDonuts();
-  initUsageGauges();
-  initCountValues();
+  prepareDashboardMetrics(document);
+  initDashboardEntrance();
+  window.addEventListener('resize', syncDashboardMetrics);
 });

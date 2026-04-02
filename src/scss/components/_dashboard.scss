@@ -319,6 +319,25 @@
   gap: 20px;
 }
 
+.dashboard-entry-card {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.js-ready .dashboard-entry-card {
+  opacity: 0;
+  transform: translateY(34px);
+  transition:
+    opacity 0.56s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.56s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.js-ready .dashboard-entry-card.is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 .summary-card {
   border-radius: 18px;
 }
