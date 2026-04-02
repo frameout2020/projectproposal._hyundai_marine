@@ -1,0 +1,25 @@
+{
+  "name": "hd-insurance-media-platform",
+  "version": "1.0.0",
+  "private": true,
+  "description": "HTML + SCSS + Gulp scaffold for Figma implementation work.",
+  "scripts": {
+    "dev": "gulp",
+    "build": "gulp build"
+  },
+  "browserslist": [
+    "last 2 versions",
+    "not dead"
+  ],
+  "devDependencies": {
+    "autoprefixer": "^10.4.21",
+    "browser-sync": "^3.0.4",
+    "cssnano": "^7.1.1",
+    "del": "^8.0.1",
+    "gulp": "^5.0.1",
+    "gulp-postcss": "^10.0.0",
+    "gulp-sass": "^6.0.1",
+    "gulp-sourcemaps": "^3.0.0",
+    "sass": "^1.93.2"
+  }
+}
