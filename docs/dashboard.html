@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>현대해상 차세대 통합 관리 시스템</title>
+    <link rel="stylesheet" href="./assets/css/style.css" />
+  </head>
+  <body>
+    <div class="dashboard-app">
+      <header class="dashboard-header">
+        <div class="dashboard-header__brand">
+          <a class="dashboard-brand" href="./dashboard.html" aria-label="현대해상 차세대 통합 관리 시스템">
+            <span class="dashboard-brand__mark" aria-hidden="true">H</span>
+            <span class="dashboard-brand__text">현대해상</span>
+            <span class="dashboard-brand__title">차세대 통합 관리 시스템</span>
+          </a>
+        </div>
+
+        <div class="dashboard-header__tools">
+          <label class="dashboard-search" for="dashboard-search">
+            <svg class="dashboard-search__icon" viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="11" cy="11" r="6"></circle>
+              <path d="M16 16l4.5 4.5"></path>
+            </svg>
+            <input
+              id="dashboard-search"
+              class="dashboard-search__input"
+              type="search"
+              placeholder="검색어를 입력하세요..."
+            />
+          </label>
+
+          <button class="dashboard-header__search-btn" type="button">검색</button>
+
+          <button class="dashboard-icon-btn" type="button" aria-label="알림">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 4a4 4 0 0 0-4 4v2.2c0 .8-.3 1.5-.8 2.1L5.8 14a1 1 0 0 0 .8 1.7h10.8a1 1 0 0 0 .8-1.7l-1.4-1.7a3.2 3.2 0 0 1-.8-2.1V8a4 4 0 0 0-4-4Z"></path>
+              <path d="M10.5 18a1.8 1.8 0 0 0 3 0"></path>
+            </svg>
+            <span class="dashboard-icon-btn__badge">3</span>
+          </button>
+
+          <button class="dashboard-user" type="button">
+            <span class="dashboard-user__avatar">김</span>
+            <span class="dashboard-user__name">김현대</span>
+          </button>
+        </div>
+      </header>
+
+      <div class="dashboard-shell">
+        <aside class="dashboard-sidebar">
+          <nav class="dashboard-nav" aria-label="주요 메뉴">
+            <a class="dashboard-nav__item dashboard-nav__item--home is-active" href="#">
+              <span class="dashboard-nav__icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="37" height="39" viewBox="0 0 37 39" fill="none">
+                  <path d="M34 16.6094C34 16.2782 33.9275 15.9508 33.7881 15.6504C33.6486 15.3499 33.4454 15.083 33.1924 14.8691L33.1846 14.8633L19.9707 3.53809L19.8115 3.41504C19.429 3.14571 18.9711 3 18.5 3C17.9617 3 17.4404 3.19062 17.0293 3.53809L3.81543 14.8633L3.80762 14.8691C3.55462 15.083 3.35137 15.3499 3.21191 15.6504C3.07251 15.9508 2.99998 16.2782 3 16.6094V33.6104C3.00005 34.2143 3.23995 34.7936 3.66699 35.2207C4.09406 35.6478 4.6734 35.8876 5.27734 35.8877H31.7227C32.3266 35.8876 32.9059 35.6478 33.333 35.2207C33.7601 34.7936 33.9999 34.2143 34 33.6104V16.6094ZM37 33.6104C36.9999 35.01 36.4438 36.3521 35.4541 37.3418C34.4644 38.3315 33.1223 38.8876 31.7227 38.8877H5.27734C3.87775 38.8876 2.53557 38.3315 1.5459 37.3418C0.556245 36.3521 5.36568e-05 35.01 1.18381e-07 33.6104V16.6104C-0.00016245 15.8427 0.167113 15.0841 0.490234 14.3877C0.813376 13.6913 1.28475 13.0737 1.87109 12.5781L15.085 1.25391L15.0928 1.24707C16.0454 0.441968 17.2527 0 18.5 0C19.6695 0 20.8034 0.388469 21.7256 1.10059L21.9072 1.24707L21.915 1.25391L35.1289 12.5781C35.7153 13.0737 36.1866 13.6913 36.5098 14.3877C36.8329 15.0841 37.0002 15.8427 37 16.6104V33.6104Z" fill="#F18D00"/>
+                </svg>
+              </span>
+              <span class="dashboard-nav__label">통합 대시보드</span>
+            </a>
+
+            <a class="dashboard-nav__item dashboard-nav__item--form" href="#">
+              <span class="dashboard-nav__icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 35 35" fill="none">
+                  <path d="M1.5625 3.9375C1.5625 3.10907 2.23407 2.4375 3.0625 2.4375C3.89093 2.4375 4.5625 3.10907 4.5625 3.9375V29.5625H32.8125C33.6409 29.5625 34.3125 30.2341 34.3125 31.0625C34.3125 31.8909 33.6409 32.5625 32.8125 32.5625H3.0625C2.23407 32.5625 1.5625 31.8909 1.5625 31.0625V3.9375Z" fill="#131416"/>
+                  <path d="M28.8475 5.88868C29.2198 5.14872 30.1212 4.85051 30.8612 5.22267C31.6012 5.59496 31.8994 6.49634 31.5272 7.23634L25.2382 19.7363C25.0181 20.1737 24.5986 20.4764 24.1141 20.5469C23.6296 20.6172 23.1409 20.4466 22.8055 20.0899L16.7528 13.6514L11.413 24.7149C11.0527 25.4607 10.156 25.7732 9.41004 25.4131C8.66421 25.0529 8.35171 24.1561 8.71179 23.4102L15.0009 10.3818L15.0907 10.2217C15.3217 9.86323 15.6967 9.61738 16.1239 9.55177C16.6121 9.47683 17.1059 9.64695 17.4442 10.0068L23.5223 16.4727L28.8475 5.88868Z" fill="#131416"/>
+                </svg>
+              </span>
+              <span class="dashboard-nav__label">서식 처리 현황</span>
+            </a>
+
+            <a class="dashboard-nav__item dashboard-nav__item--error" href="#">
+              <span class="dashboard-nav__icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
+                  <path d="M25.0001 3.33334H10.0001C9.11603 3.33334 8.26818 3.68453 7.64306 4.30965C7.01794 4.93478 6.66675 5.78262 6.66675 6.66668V33.3333C6.66675 34.2174 7.01794 35.0652 7.64306 35.6904C8.26818 36.3155 9.11603 36.6667 10.0001 36.6667H30.0001C30.8841 36.6667 31.732 36.3155 32.3571 35.6904C32.9822 35.0652 33.3334 34.2174 33.3334 33.3333V11.6667L25.0001 3.33334Z" stroke="#131416" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M15 18.5L25.5 29" stroke="#131416" stroke-width="3" stroke-linecap="round"/>
+                  <path d="M25.5 18.5L15 29" stroke="#131416" stroke-width="3" stroke-linecap="round"/>
+                  <path d="M23.3333 3.33334V10C23.3333 10.8841 23.6844 11.7319 24.3096 12.357C24.9347 12.9822 25.7825 13.3333 26.6666 13.3333H33.3333" stroke="#131416" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              <span class="dashboard-nav__label">오류 현황</span>
+            </a>
+
+            <a class="dashboard-nav__item dashboard-nav__item--usage" href="#">
+              <span class="dashboard-nav__icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="55" height="55" viewBox="0 0 55 55" fill="none">
+                  <g clip-path="url(#clip0_2_2352)">
+                    <path d="M38.6859 14.1134L28.3487 28.1897L45.4338 27.4163" stroke="black" stroke-width="3" stroke-linejoin="round"/>
+                    <path d="M27.373 27.9704L26.3804 11.861" stroke="black" stroke-width="3" stroke-linecap="round"/>
+                    <circle cx="27.9705" cy="27.5922" r="17.5" transform="rotate(12.6633 27.9705 27.5922)" stroke="black" stroke-width="3"/>
+                  </g>
+                  <defs>
+                    <clipPath id="clip0_2_2352">
+                      <rect width="46" height="46" fill="white" transform="translate(10.0842) rotate(12.6633)"/>
+                    </clipPath>
+                  </defs>
+                </svg>
+              </span>
+              <span class="dashboard-nav__label">시스템 사용현황</span>
+            </a>
+
+            <a class="dashboard-nav__item dashboard-nav__item--monitor" href="#">
+              <span class="dashboard-nav__icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="46" height="46" viewBox="0 0 46 46" fill="none">
+                  <path d="M21.653 31L17.1093 38.8345C17.0439 38.9474 17.0064 39.0787 17.0007 39.2142C16.9951 39.3497 17.0215 39.4844 17.0773 39.604C17.133 39.7236 17.2158 39.8236 17.3171 39.8933C17.4183 39.9631 17.5341 39.9999 17.6521 40L28.3473 40C28.4621 40 28.5749 39.9653 28.6743 39.8992C28.7737 39.8331 28.8561 39.738 28.9133 39.6236C28.9705 39.5092 29.0004 39.3794 29 39.2475C28.9996 39.1155 28.9689 38.986 28.9111 38.872L24.9154 31" stroke="#131416" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M35.1429 6H10.8571C8.17462 6 6 7.79086 6 10V26C6 28.2091 8.17462 30 10.8571 30H35.1429C37.8254 30 40 28.2091 40 26V10C40 7.79086 37.8254 6 35.1429 6Z" stroke="#131416" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              <span class="dashboard-nav__label">모니터링 관리</span>
+            </a>
+          </nav>
+
+          <div class="dashboard-sidebar__sub">
+            <a href="#">서식 및 코드관리</a>
+            <a href="#">동기화 히스토리</a>
+            <a href="#">접근 이력 관리</a>
+          </div>
+        </aside>
+
+        <main class="dashboard-content">
+          <section class="summary-grid">
+            <article class="summary-card summary-card--accent dashboard-entry-card">
+              <div class="summary-card__body">
+                <p class="summary-card__title">보험금 청구</p>
+                <strong class="summary-card__value" data-animate="count" data-count="411">411</strong>
+                <p class="summary-card__meta">CFEP</p>
+                <p class="summary-card__change">^ +12.5% 전일 대비</p>
+              </div>
+              <div class="summary-card__icon">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M7 3.5h7l4 4V20a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4.5a1 1 0 0 1 1-1Z"></path>
+                  <path d="M14 3.5V8h4"></path>
+                  <path d="M9 12h6"></path>
+                  <path d="M9 16h6"></path>
+                </svg>
+              </div>
+            </article>
+
+            <article class="summary-card summary-card--accent dashboard-entry-card">
+              <div class="summary-card__body">
+                <p class="summary-card__title">장기보험</p>
+                <strong class="summary-card__value" data-animate="count" data-count="126">126</strong>
+                <p class="summary-card__meta">LTAP / LTCM / LTMC / LTLT</p>
+                <p class="summary-card__change">^ +2.5% 전일 대비</p>
+              </div>
+              <div class="summary-card__icon">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M3 12h4l2.2-5 4.1 10 2.7-7H21"></path>
+                </svg>
+              </div>
+            </article>
+
+            <article class="summary-card summary-card--accent dashboard-entry-card">
+              <div class="summary-card__body">
+                <p class="summary-card__title">자동차 보험</p>
+                <strong class="summary-card__value" data-animate="count" data-count="458">458</strong>
+                <p class="summary-card__meta">MTMP / CLMP</p>
+                <p class="summary-card__change">^ +2.5% 전일 대비</p>
+              </div>
+              <div class="summary-card__icon">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M6 15h12l-1-5a2 2 0 0 0-2-1.6H9A2 2 0 0 0 7 10Z"></path>
+                  <path d="M4.5 15h15V18a1 1 0 0 1-1 1h-1.5v-2h-10v2H5.5a1 1 0 0 1-1-1Z"></path>
+                  <circle cx="8" cy="16.5" r="1"></circle>
+                  <circle cx="16" cy="16.5" r="1"></circle>
+                </svg>
+              </div>
+            </article>
+
+            <div class="summary-side">
+              <article class="summary-card summary-card--outline dashboard-entry-card">
+                <div>
+                  <p class="summary-card__title summary-card__title--dark">해약 및 해지</p>
+                  <p class="summary-card__meta summary-card__meta--dark">LTMR</p>
+                </div>
+                <strong class="summary-card__value summary-card__value--dark" data-animate="count" data-count="24">24</strong>
+              </article>
+
+              <article class="summary-card summary-card--outline dashboard-entry-card">
+                <div>
+                  <p class="summary-card__title summary-card__title--dark">일반 공통 서식</p>
+                  <p class="summary-card__meta summary-card__meta--dark">GIMP</p>
+                </div>
+                <strong class="summary-card__value summary-card__value--dark" data-animate="count" data-count="15">15</strong>
+              </article>
+            </div>
+          </section>
+
+          <section class="dashboard-grid dashboard-grid--top">
+            <article class="dashboard-panel dashboard-panel--errors dashboard-entry-card">
+              <div class="dashboard-panel__header">
+                <h2 class="dashboard-panel__title">오류 현황</h2>
+                <div class="dashboard-tabs" aria-label="오류 현황 범위">
+                  <button class="dashboard-tabs__item is-active" type="button">오늘</button>
+                  <button class="dashboard-tabs__item" type="button">주간</button>
+                  <button class="dashboard-tabs__item" type="button">월간</button>
+                </div>
+              </div>
+
+              <div class="error-chart" data-animate="bars" data-max="1000">
+                <div class="error-chart__grid">
+                  <span>1000</span>
+                  <span>750</span>
+                  <span>500</span>
+                  <span>250</span>
+                  <span>0</span>
+                </div>
+                <div class="error-chart__bars">
+                  <div class="error-chart__bar" data-value="200">
+                    <span class="error-chart__label">저장오류</span>
+                    <div class="error-chart__bar-area">
+                      <strong class="error-chart__value">200</strong>
+                      <div class="error-chart__column"></div>
+                    </div>
+                  </div>
+
+                  <div class="error-chart__bar" data-value="260">
+                    <span class="error-chart__label">인터페이스 오류</span>
+                    <div class="error-chart__bar-area">
+                      <strong class="error-chart__value">260</strong>
+                      <div class="error-chart__column"></div>
+                    </div>
+                  </div>
+
+                  <div class="error-chart__bar" data-value="350">
+                    <span class="error-chart__label">서식 오류</span>
+                    <div class="error-chart__bar-area">
+                      <strong class="error-chart__value">350</strong>
+                      <div class="error-chart__column"></div>
+                    </div>
+                  </div>
+
+                  <div class="error-chart__bar error-chart__bar--critical" data-value="890">
+                    <span class="error-chart__label">변환 오류</span>
+                    <div class="error-chart__bar-area">
+                      <strong class="error-chart__value">890</strong>
+                      <div class="error-chart__column"></div>
+                    </div>
+                  </div>
+
+                  <div class="error-chart__bar" data-value="380">
+                    <span class="error-chart__label">권한 오류</span>
+                    <div class="error-chart__bar-area">
+                      <strong class="error-chart__value">380</strong>
+                      <div class="error-chart__column"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="dashboard-panel dashboard-panel--usage dashboard-entry-card">
+              <div class="dashboard-panel__header">
+                <h2 class="dashboard-panel__title">시스템 사용현황</h2>
+              </div>
+
+              <div class="usage-panel">
+                <div class="usage-panel__donut">
+                  <div class="usage-panel__donut-ring" data-animate="donut" data-progress="50">
+                    <svg class="usage-panel__donut-svg" viewBox="0 0 160 160" aria-hidden="true">
+                      <circle class="usage-panel__donut-track" cx="80" cy="80" r="60"></circle>
+                      <circle class="usage-panel__donut-progress" cx="80" cy="80" r="60"></circle>
+                    </svg>
+                    <div class="usage-panel__donut-text">
+                      <strong>50%</strong>
+                      <span>상태 양호</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="usage-panel__stats">
+                  <div class="usage-meter">
+                    <div class="usage-meter__head">
+                      <span>CPU Usage</span>
+                      <strong data-animate="count" data-count="65" data-suffix="%">65%</strong>
+                    </div>
+                    <div class="usage-meter__track usage-meter__track--green">
+                      <span style="width: 65%;"></span>
+                    </div>
+                  </div>
+
+                  <div class="usage-meter">
+                    <div class="usage-meter__head">
+                      <span>Memory Usage</span>
+                      <strong data-animate="count" data-count="35" data-suffix="%">35%</strong>
+                    </div>
+                    <div class="usage-meter__track usage-meter__track--red">
+                      <span style="width: 58%;"></span>
+                    </div>
+                  </div>
+
+                  <div class="usage-cards">
+                    <article class="usage-card">
+                      <div class="usage-card__icon">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                          <circle cx="12" cy="12" r="4"></circle>
+                          <path d="M12 2v3"></path>
+                          <path d="M12 19v3"></path>
+                          <path d="M4.9 4.9l2.1 2.1"></path>
+                          <path d="m17 17 2.1 2.1"></path>
+                          <path d="M2 12h3"></path>
+                          <path d="M19 12h3"></path>
+                        </svg>
+                      </div>
+                      <span class="usage-card__label">Executer</span>
+                      <strong class="usage-card__value" data-animate="count" data-count="4" data-suffix="ea">4ea</strong>
+                    </article>
+
+                    <article class="usage-card">
+                      <div class="usage-card__icon">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                          <path d="M5 7h14"></path>
+                          <path d="M5 12h14"></path>
+                          <path d="M5 17h14"></path>
+                          <circle cx="8" cy="7" r="1"></circle>
+                          <circle cx="8" cy="12" r="1"></circle>
+                          <circle cx="8" cy="17" r="1"></circle>
+                        </svg>
+                      </div>
+                      <span class="usage-card__label">Queue</span>
+                      <strong class="usage-card__value" data-animate="count" data-count="100">100</strong>
+                    </article>
+
+                    <article class="usage-gauge">
+                      <h3>System Efficiency</h3>
+                      <div class="usage-gauge__chart" data-animate="gauge" data-progress="70">
+                        <svg class="usage-gauge__svg" viewBox="0 0 120 72" aria-hidden="true">
+                          <path
+                            class="usage-gauge__track"
+                            d="M12 60 A48 48 0 0 1 108 60"
+                          ></path>
+                          <path
+                            class="usage-gauge__progress"
+                            d="M12 60 A48 48 0 0 1 108 60"
+                          ></path>
+                        </svg>
+                        <div class="usage-gauge__inner">
+                          <strong>70%</strong>
+                          <span>전체 시스템 효율</span>
+                        </div>
+                      </div>
+                    </article>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </section>
+
+          <section class="dashboard-grid dashboard-grid--bottom">
+            <article class="dashboard-panel dashboard-entry-card">
+              <div class="dashboard-panel__header">
+                <h2 class="dashboard-panel__title">모니터링 관리</h2>
+              </div>
+
+              <ul class="monitor-list">
+                <li class="monitor-list__item">
+                  <span class="monitor-list__status monitor-list__status--green"></span>
+                  <span class="monitor-list__name">보험금 청구서</span>
+                  <span class="monitor-list__date">2024.03.20 14:32</span>
+                  <span class="monitor-list__tag monitor-list__tag--green">성공</span>
+                </li>
+                <li class="monitor-list__item">
+                  <span class="monitor-list__status monitor-list__status--red"></span>
+                  <span class="monitor-list__name">장기보험 청약서</span>
+                  <span class="monitor-list__date">2023.01.20 15:32</span>
+                  <span class="monitor-list__tag monitor-list__tag--orange">실패</span>
+                </li>
+                <li class="monitor-list__item">
+                  <span class="monitor-list__status monitor-list__status--red"></span>
+                  <span class="monitor-list__name">자동차보험 청구서</span>
+                  <span class="monitor-list__date">2026.04.40 10:32</span>
+                  <span class="monitor-list__tag monitor-list__tag--orange">실패</span>
+                </li>
+                <li class="monitor-list__item">
+                  <span class="monitor-list__status monitor-list__status--red"></span>
+                  <span class="monitor-list__name">도난 확인서</span>
+                  <span class="monitor-list__date">2026.04.40 10:32</span>
+                  <span class="monitor-list__tag monitor-list__tag--orange">실패</span>
+                </li>
+              </ul>
+            </article>
+
+            <article class="dashboard-panel dashboard-entry-card">
+              <div class="dashboard-panel__header">
+                <h2 class="dashboard-panel__title">서식 처리 현황</h2>
+              </div>
+
+              <div class="table-card">
+                <div class="table-card__head">
+                  <span>접수/변환/출력자료</span>
+                  <span>용량</span>
+                  <span>코드</span>
+                </div>
+
+                <div class="table-card__row">
+                  <span>자동차 사고 접수 및 대물 배상 청구서</span>
+                  <span>100KB</span>
+                  <span class="table-card__pill">MTMP</span>
+                </div>
+                <div class="table-card__row">
+                  <span>타사 보험금 지급 이력 확인</span>
+                  <span>150KB</span>
+                  <span class="table-card__pill">CFFP</span>
+                </div>
+                <div class="table-card__row">
+                  <span>도난/분실 사고 신고 확인서</span>
+                  <span>200KB</span>
+                  <span class="table-card__pill">GIMP</span>
+                </div>
+                <div class="table-card__row">
+                  <span>수리자 지정 및 변경 신청서</span>
+                  <span>450KB</span>
+                  <span class="table-card__pill">CFFP</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="dashboard-panel dashboard-entry-card">
+              <div class="dashboard-panel__header">
+                <h2 class="dashboard-panel__title">공지사항</h2>
+              </div>
+
+              <ul class="notice-list">
+                <li class="notice-list__item">
+                  <span class="notice-list__date notice-list__date--accent">03/01</span>
+                  <div>
+                    <strong>양식 계정 안내입니다.</strong>
+                    <p>양식 이용 시 계정명의 후 이용바랍니다.</p>
+                  </div>
+                </li>
+                <li class="notice-list__item">
+                  <span class="notice-list__date">02/22</span>
+                  <div>
+                    <strong>[보완 요청] 제출하신 보험청구 서류의 추가</strong>
+                    <p>양식명: 해당 외) 확인이 필요한부분 청구</p>
+                  </div>
+                </li>
+                <li class="notice-list__item">
+                  <span class="notice-list__date">01/05</span>
+                  <div>
+                    <strong>[안내] 고객님이 청구하신 보험금이 정상 접수</strong>
+                    <p>접수 후 심의 절차에 따른 불필요 누락</p>
+                  </div>
+                </li>
+                <li class="notice-list__item">
+                  <span class="notice-list__date">01/04</span>
+                  <div>
+                    <strong>[공지] 최근 보험금 청구 급증으로 인한 심사</strong>
+                    <p>[보험청구 메뉴 &gt; 보험비 영수증 등록] &gt; 보험사 선택 후 전송</p>
+                  </div>
+                </li>
+              </ul>
+            </article>
+          </section>
+        </main>
+      </div>
+    </div>
+
+    <script src="./assets/js/main.js"></script>
+  </body>
+</html>
